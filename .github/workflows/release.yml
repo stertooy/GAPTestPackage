@@ -53,12 +53,12 @@ jobs:
           } >> $GITHUB_ENV
 
       - name: "Make release"
-        uses: stertooy/release-pkg@local-checkout-exp
+        uses: gap-actions/release-pkg@v1
         with:
           dry-run: ${{ inputs.dry-run }}
           body-text: ${{ env.BODY }} 
           force: ${{ inputs.force }}
 
       - name: "Update GitHub Pages"
-        uses: gap-actions/update-gh-pages@v1
+        uses: stertooy/update-gh-pages@local-checkout-exp
         if: ${{ !inputs.dry-run }}
