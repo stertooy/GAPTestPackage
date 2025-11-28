@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This is an automatically generated file. -->
+<Chapter Label="Chapter_The_Small_Class_Number_Library">
+<Heading>The Small Class Number Library</Heading>
+
+<Section Label="Chapter_The_Small_Class_Number_Library_Section_Functions">
+<Heading>Functions</Heading>
+
+<ManSection>
+  <Func Arg="k, i" Name="SmallClassNrGroup" />
+ <Returns>the <A>i</A>-th finite group of class number <A>k</A> in the library.
+</Returns>
+ <Description>
+ Alternatively, the pair <C>[ <A>k</A>, <A>i</A> ]</C> can be given as a single argument <A>id</A>.
+ If the group is solvable, it is given as a PcGroup whose Pcgs is a SpecialPcgs.
+ If the group is not solvable, it will be given as a permutation group of minimal permutation degree and with a minimal generating set.
+ </Description>
+</ManSection>
+
+
+<Example><![CDATA[
+gap> G := SmallClassNrGroup( 6, 4 );
+<pc group of size 18 with 3 generators>
+gap> NrConjugacyClasses( G );
+6
+gap> IsDihedralGroup( G );
+true
+]]></Example>
+
+
+<ManSection>
+  <Func Arg="k" Name="SmallClassNrGroupsAvailable" />
+ <Returns><K>true</K> if the finite groups of class number <A>k</A> are available in the library, and <K>false</K> otherwise.
+</Returns>
+ <Description>
+<P/>
+ </Description>
+</ManSection>
+
+
+<Example><![CDATA[
+gap> SmallClassNrGroupsAvailable( 14 );
+true
+gap> SmallClassNrGroupsAvailable( 15 );
+false
+]]></Example>
+
+
+<ManSection>
+  <Func Arg="arg" Name="AllSmallClassNrGroups" />
+ <Returns>all finite groups with certain properties as specified by <A>arg</A>.
+</Returns>
+ <Description>
+ The arguments must come in pairs consisting of a function and a value (or list of possible values).
+ At least one of the functions must be <K>NrConjugacyClasses</K>.
+ Missing functions will be interpreted as <K>NrConjugacyClasses</K>, missing values as <K>true</K>.
+ </Description>
+</ManSection>
+
+
+<Example><![CDATA[
+gap> L1 := AllSmallClassNrGroups( [3..5], IsNilpotent );
+[ <pc group of size 3 with 1 generator>,
+  <pc group of size 4 with 2 generators>,
+  <pc group of size 4 with 2 generators>,
+  <pc group of size 5 with 1 generator>,
+  <pc group of size 8 with 3 generators>,
+  <pc group of size 8 with 3 generators> ]
+gap> List( L1, NrConjugacyClasses );
+[ 3, 4, 4, 5, 5, 5 ]
+gap> L2 := AllSmallClassNrGroups( IsSolvable, true, NrConjugacyClasses, 6 );
+[ <pc group of size 6 with 2 generators>,
+  <pc group of size 12 with 3 generators>,
+  <pc group of size 12 with 3 generators>,
+  <pc group of size 18 with 3 generators>,
+  <pc group of size 18 with 3 generators>,
+  <pc group of size 36 with 4 generators>,
+  <pc group of size 72 with 5 generators> ]
+gap> ForAll( L2, G -> IsSolvable( G ) and NrConjugacyClasses( G ) = 6 );
+true
+]]></Example>
+
+
+<ManSection>
+  <Func Arg="arg" Name="OneSmallClassNrGroup" />
+ <Returns>one finite group with certain properties as specified by <A>arg</A>.
+</Returns>
+ <Description>
+ The arguments must come in pairs consisting of a function and a value (or list of possible values).
+ At least one of the functions must be <C>NrConjugacyClasses</C>.
+ Missing functions will be interpreted as <C>NrConjugacyClasses</C>, missing values as <K>true</K>.
+ </Description>
+</ManSection>
+
+
+<Example><![CDATA[
+gap> H := OneSmallClassNrGroup( 6, IsAbelian );
+<pc group of size 6 with 2 generators>
+gap> IsCyclic( H );
+true
+gap> K := OneSmallClassNrGroup( 10, IsSolvable, true, IsNilpotent, false );
+<pc group of size 28 with 3 generators>
+gap> NrConjugacyClasses( K ) = 10 and IsSolvable( K ) and not IsNilpotent( K );
+true
+]]></Example>
+
+
+<ManSection>
+  <Func Arg="arg" Name="NrSmallClassNrGroups" />
+ <Returns>the number of finite groups with certain properties as specified by <A>arg</A>.
+</Returns>
+ <Description>
+ The arguments must come in pairs consisting of a function and a value (or list of possible values).
+ At least one of the functions must be <C>NrConjugacyClasses</C>.
+ Missing functions will be interpreted as <C>NrConjugacyClasses</C>, missing values as <K>true</K>.
+ </Description>
+</ManSection>
+
+
+<Example><![CDATA[
+gap> NrSmallClassNrGroups( 14 );
+93
+gap> NrSmallClassNrGroups( [3..5], IsNilpotentGroup );
+6
+gap> NrSmallClassNrGroups( IsSolvable, true, NrConjugacyClasses, 6 );
+7
+]]></Example>
+
+
+<ManSection>
+  <Func Arg="arg" Name="IteratorSmallClassNrGroups" />
+ <Returns>an iterator that iterates over the finite groups with properties as specified by <A>arg</A>.  The arguments must come in pairs consisting of a function and a value (or list of possible values).
+  At least one of the functions must be <C>NrConjugacyClasses</C>.
+  Missing functions will be interpreted as <C>NrConjugacyClasses</C>, missing values as <K>true</K>.
+</Returns>
+ <Description>
+<P/>
+ </Description>
+</ManSection>
+
+
+<Example><![CDATA[
+gap> iter := IteratorSmallClassNrGroups( IsSolvable, false, 11 );
+<iterator>
+gap> for G in iter do Print( Size( G ), "\n" ); od;
+336
+720
+720
+1344
+1344
+1512
+2448
+29120
+]]></Example>
+
+
+<ManSection>
+  <Attr Arg="G" Name="IdClassNr" />
+ <Returns>the &PACKAGENAME; ID of <A>G</A>, i.e. a pair <C>[ <A>k</A>, <A>i</A> ]</C> such that <A>G</A> is isomorphic to <C>SmallClassNrGroup( <A>k</A>, <A>i</A> )</C>.
+</Returns>
+ <Description>
+<P/>
+ </Description>
+</ManSection>
+
+
+<Example><![CDATA[
+gap> IdClassNr( AlternatingGroup( 5 ) );
+[ 5, 8 ]
+gap> A := SmallClassNrGroup( 5, 8 );
+Group([ (1,2,3), (1,4,5) ])
+gap> IsAlternatingGroup( A );
+true
+]]></Example>
+
+
+</Section>
+
+
+</Chapter>
+

@@ -1,0 +1,33 @@
+name: CI
+on:
+  - push
+  - pull_request
+  - workflow_call
+  - workflow_dispatch
+
+jobs:
+
+  test-pkg:
+    name: "Test package (version: ${{ matrix.gap-version }}"
+    uses: ./.github/workflows/test-pkg.yml
+    with:
+      gap-version: ${{ matrix.gap-version }}
+      warnings-as-errors: true
+      coverage: ${{ matrix.gap-version == 'master' }}
+    secrets: inherit
+    strategy:
+      fail-fast: false
+      matrix:
+        gap-version: [ "4.14.0", "4.15.0", "4.15.1", "master" ]
+
+  test-gap:
+    name: "Test GAP (version: ${{ matrix.gap-version }}"
+    uses: ./.github/workflows/test-gap.yml
+    with:
+      gap-version: ${{ matrix.gap-version }}
+      complete: false
+      warnings-as-errors: true
+    strategy:
+      fail-fast: false
+      matrix:
+        gap-version: [ "4.14.0", "4.15.0", "4.15.1", "master" ]

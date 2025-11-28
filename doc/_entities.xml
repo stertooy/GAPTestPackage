@@ -1,0 +1,15 @@
+<!ENTITY AutoDoc '<Package>AutoDoc</Package>'>
+<!ENTITY VERSION '1.3.1'>
+<!ENTITY RELEASEYEAR '2025'>
+<!ENTITY AT '@'>
+<!ENTITY PackageManager '<Package>PackageManager</Package>'>
+<!ENTITY BibLaTeX 'Bib&LaTeX;'>
+<!ENTITY ABBREV 'SCN'>
+<!ENTITY packagename 'SmallClassNr'>
+<!ENTITY PACKAGENAME '<Package>SmallClassNr</Package>'>
+<!ENTITY ARCHIVEURL 'https://github.com/stertooy/SmallClassNr/releases/download/v1.3.1/SmallClassNr-1.3.1'>
+<!ENTITY ISSUEURL 'https://github.com/stertooy/SmallClassNr/issues'>
+<!ENTITY HOMEURL 'https://stertooy.github.io/SmallClassNr'>
+<!ENTITY SUPPORTEMAIL 'sam.tertooy@kuleuven.be'>
+<!ENTITY SUBTITLE 'Library of groups with small class number'>
+<!ENTITY SmallClassNr '<Package>SmallClassNr</Package>'>
