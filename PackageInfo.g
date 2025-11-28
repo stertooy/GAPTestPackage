@@ -1,6 +1,6 @@
 SetPackageInfo( rec(
 
-PackageName := "SmallClassNr",
+PackageName := "GAPTestPackage",
 Subtitle := "Library of finite groups with small class number",
 Version := "1.4.4",
 Date := "28/11/2025",
