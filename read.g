@@ -1,5 +1,5 @@
 BindGlobal( "SCN", rec() );
 
-ReadPackage( "SmallClassNr", "data/smallclassnr.grp" );
-ReadPackage( "SmallClassNr", "lib/smallclassnr.g" );
-ReadPackage( "SmallClassNr", "lib/smallclassnr.gi" );
+ReadPackage( "GAPTestPackage", "data/smallclassnr.grp" );
+ReadPackage( "GAPTestPackage", "lib/smallclassnr.g" );
+ReadPackage( "GAPTestPackage", "lib/smallclassnr.gi" );
