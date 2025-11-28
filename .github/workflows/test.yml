@@ -1,0 +1,52 @@
+name: Test stuff
+
+on:
+  workflow_call:
+    inputs:
+      dry-run:
+        type: boolean
+        default: true
+      force:
+        type: boolean
+        default: false
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        description: "Only create an archive containing the release instead of publishing it on GitHub"
+        type: boolean
+        required: false
+        default: false
+      force:
+        description: "Allow overwriting an existing release, or making a release with an incorrect date"
+        type: boolean
+        required: false
+        default: false
+
+permissions: write-all
+
+jobs:
+  release:
+    name: "Release the GAP package"
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: "Checkout"
+        uses: actions/checkout@v6
+
+      - name: Tets
+        shell: bash
+        run: |
+          ls -a $RUNNER_TEMP
+
+      - name: "Setup GAP"
+        uses: gap-actions/setup-gap@v3
+
+      - name: "Build manual"
+        uses: gap-actions/build-pkg-docs@v2
+        with:
+          use-latex: true
+
+      - name: "Update GitHub Pages"
+        uses: gap-actions/update-gh-pages@v1
+        if: ${{ !inputs.dry-run }}
