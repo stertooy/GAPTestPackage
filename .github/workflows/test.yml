@@ -34,7 +34,7 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v6
 
-      - name: Tets
+      - name: Test
         shell: bash
         run: |
           ls -a $RUNNER_TEMP
@@ -42,11 +42,6 @@ jobs:
       - name: "Setup GAP"
         uses: gap-actions/setup-gap@v3
 
-      - name: "Build manual"
-        uses: gap-actions/build-pkg-docs@v2
-        with:
-          use-latex: true
-
       - name: "Update GitHub Pages"
-        uses: gap-actions/update-gh-pages@v1
+        uses: stertooy/update-gh-pages@v6_compat
         if: ${{ !inputs.dry-run }}
