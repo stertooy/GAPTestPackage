@@ -1,3 +1,3 @@
 DeclareGlobalName( "SCN" );
 
-ReadPackage( "SmallClassNr", "lib/smallclassnr.gd" );
+ReadPackage( "GAPTestPackage", "lib/smallclassnr.gd" );
