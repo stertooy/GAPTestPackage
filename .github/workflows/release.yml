@@ -37,6 +37,9 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v6
 
+      - name: "Add custom GAP root"
+        run: ln -f -s $PWD /tmp/gaproot/pkg/
+
       - name: "Build manual"
         uses: gap-actions/build-pkg-docs@v2
         with:
