@@ -1,7 +1,7 @@
-LoadPackage( "SmallClassNr" );
+LoadPackage( "GAPTestPackage" );
 
 pass := TestDirectory(
-    DirectoriesPackageLibrary( "SmallClassNr", "tst" ),
+    DirectoriesPackageLibrary( "GAPTestPackage", "tst" ),
     rec(
         exitGAP := false,
         showProgress := true,
