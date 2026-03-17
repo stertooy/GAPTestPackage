@@ -60,7 +60,10 @@ jobs:
       - name: "TEST"
         shell: bash
         run: |
+          echo "ATTEMPT ONE:"
           echo "${{ steps.changes.outputs.RELEASE_NOTES }}"
+          echo "ATTEMPT TWO:"
+          echo '${{ steps.changes.outputs.RELEASE_NOTES }}'
 
       - name: "Make release"
         uses: stertooy/release-pkg@backtick-fix-exp
