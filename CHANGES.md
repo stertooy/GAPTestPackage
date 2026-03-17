@@ -6,6 +6,7 @@ This file describes changes in the GAP package SmallClassNr.
 
 - Fix faulty URLs in the documentation
 - Improve references in the documentation
+- Try `BACKTICKSTEXT` in here?
 
 
 
