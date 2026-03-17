@@ -2,8 +2,8 @@ SetPackageInfo( rec(
 
 PackageName := "GAPTestPackage",
 Subtitle := "Library of finite groups with small class number",
-Version := "1.4.7",
-Date := "28/11/2025",
+Version := "1.4.8",
+Date := "17/03/2026",
 License := "GPL-2.0-or-later",
 
 Persons := [
