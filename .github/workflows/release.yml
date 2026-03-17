@@ -63,7 +63,7 @@ jobs:
           echo "${{ steps.changes.outputs.RELEASE_NOTES }}"
 
       - name: "Make release"
-        uses: stertooy/release-pkg@body-text-fix
+        uses: stertooy/release-pkg@backtick-fix-exp
         with:
           dry-run: ${{ inputs.dry-run }}
           body-text: ${{ steps.changes.outputs.RELEASE_NOTES }}
