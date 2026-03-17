@@ -63,7 +63,7 @@ jobs:
           echo "${{ steps.changes.outputs.RELEASE_NOTES }}"
 
       - name: "Make release"
-        uses: gap-actions/release-pkg@v1
+        uses: stertooy/release-pkg@body-text-fix
         with:
           dry-run: ${{ inputs.dry-run }}
           body-text: ${{ steps.changes.outputs.RELEASE_NOTES }}
